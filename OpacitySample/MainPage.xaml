@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="page"
+             x:Class="OpacitySample.MainPage">
+
+    <StackLayout>
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Text="Hello"/>
+                        <BoxView BackgroundColor="Black" Opacity="0.2"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid RowDefinitions="100" ColumnDefinitions="*" BackgroundColor="BurlyWood">
+            <Label Text="test" TextColor="White"/>
+            <BoxView BackgroundColor="Blue" Opacity="0.3" HeightRequest="30" VerticalOptions="Start"/>
+        </Grid>
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Text="Hello"/>
+                        <BoxView BackgroundColor="{Binding Source={x:Reference page}, Path=BindingContext.BlackWithAlpha }"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid RowDefinitions="100" ColumnDefinitions="*" BackgroundColor="BurlyWood">
+            <Label Text="test" TextColor="White"/>
+            <BoxView BackgroundColor="{Binding BlueWithAlpha}" HeightRequest="30" VerticalOptions="Start"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
